@@ -15,10 +15,12 @@ export default function App(): JSX.Element {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import WasmTest from '@/components/wasm';
 
 ReactDOM.render(
   <React.StrictMode>
     <App></App>
+    <WasmTest />
   </React.StrictMode>,
   document.getElementById('root'),
 );

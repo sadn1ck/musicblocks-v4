@@ -12,6 +12,11 @@ const commonConfig: Configuration = {
             '@': path.resolve(__dirname, '..', 'src'),
         },
         extensions: ['.tsx', '.ts', '.js', '.scss', '.sass'],
+        fallback: {
+            fs: false,
+            path: false,
+            crypto: false,
+        },
     },
     module: {
         rules: [
@@ -42,6 +47,10 @@ const commonConfig: Configuration = {
                 test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
                 type: 'asset/inline',
             },
+            {
+                test: /\.wasm$/,
+                type: 'asset/resource',
+            },
         ],
     },
     plugins: [
@@ -68,6 +77,10 @@ const commonConfig: Configuration = {
         }),
     ],
     stats: 'normal',
+    experiments: {
+        asyncWebAssembly: true,
+        syncWebAssembly: true,
+    },
 };
 
 export { commonConfig };
